@@ -1,15 +1,11 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-import scipy as sp
-from scipy.fft import fft, ifft,fftfreq
+from scipy.fft import fft,fftfreq
 from scipy.io import wavfile
 from scipy.signal import butter, lfilter
-from scipy.io.wavfile import write
-from numpy import pi, cos, sin, exp 
-from scipy.integrate import simpson
+from numpy import pi, cos
 from scipy import integrate
-from scipy.signal import hilbert,firwin
 import scipy.signal.signaltools as sigtool 
 
 
@@ -36,6 +32,7 @@ def grafFrecuencia(frecuencias,serie,titulo,color):
     plt.ylabel('F(W)')
     plt.grid(True)
     plt.title(titulo)
+    #plt.savefig(titulo,dpi = 300)
     plt.show()
 
 # Entrada: El tiempo (float) total de las señales, un arreglo de la señal original, un arreglo señal modulada , string con
@@ -199,6 +196,11 @@ grafTiempo(t,demodulacion_AM2,"Señal demodulada AM2","red")
 demodulacion_FM1= FM_demodulacion(s_fm_1)
 demodulacion_FM2= FM_demodulacion(s_fm_2)
 
+
+#Demodulacion FM:
+demodulacion_FM1= FM_demodulacion(s_fm_1)
+demodulacion_FM2= FM_demodulacion(s_fm_2)
+
 plt.plot(t,demodulacion_FM1,color = "blue")
 plt.ylim(-22000, 22000)
 plt.grid(True)
@@ -209,9 +211,3 @@ plt.ylim(-22000, 22000)
 plt.grid(True)
 plt.title("Señal demodulada FM2")
 plt.show()
-
-
-#https://medium.com/@nabanita.sarkar/simulating-amplitude-modulation-using-python-6ed03eb4e712
-#https://www.youtube.com/watch?v=XEt47F3BV2k
-#https://stackoverflow.com/questions/60193112/python-fm-demod-implementation
-
